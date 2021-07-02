@@ -27,10 +27,10 @@ export function loadStore(a, b) {
   };
 }
 
-export function loadStoreSuccess(store) {
+export function loadStoreSuccess(todos) {
   return {
     type: LOAD_STORE_SUCCESS,
-    store,
+    todos,
   };
 }
 export function loadStoreError(error) {
