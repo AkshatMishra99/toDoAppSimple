@@ -11,6 +11,6 @@ export const scope = 'app.containers.MainPage';
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: 'This is the MainPage container!',
+    defaultMessage: 'Todos',
   },
 });

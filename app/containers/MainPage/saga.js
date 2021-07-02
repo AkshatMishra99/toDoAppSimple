@@ -5,7 +5,7 @@ import todos from './mocks/Todos';
 
 // API to fetch todos from the server or mock
 function* fetchTodos(action) {
-  console.log(action);
+  // console.log(action);
   try {
     yield put(loadStoreSuccess(todos));
   } catch (err) {

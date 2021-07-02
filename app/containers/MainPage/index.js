@@ -18,7 +18,9 @@ import { makeToDoListSelector } from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
-
+import Todos from '../../components/Todos';
+import Header from '../../components/Header';
+import InputTodo from '../../components/InputTodo';
 function MainPage(props) {
   const { toDoList, loadStore: loadStoreProp } = props;
   console.log(toDoList);
@@ -28,7 +30,7 @@ function MainPage(props) {
     loadStoreProp(1, 2);
     // console.log(loadStore);
   }, []);
-  // console.log(`the todos are ${toDoList}`, props);
+  // console.log(`the Todos are ${toDoList}`, props);
   // console.log(makeToDoListSelector);
   return (
     <div>
@@ -36,7 +38,11 @@ function MainPage(props) {
         <title>MainPage</title>
         <meta name="description" content="Description of MainPage" />
       </Helmet>
-      <FormattedMessage {...messages.header} />
+      <Header>
+        <FormattedMessage {...messages.header} />
+      </Header>
+      <InputTodo />
+      <Todos todos={toDoList} />
     </div>
   );
 }
