@@ -14,12 +14,14 @@ import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
+import MainPage from '../MainPage';
 
 export default function App() {
   return (
     <div>
       <Switch>
         <Route exact path="/" component={HomePage} />
+        <Route exact path="/store" component={MainPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
