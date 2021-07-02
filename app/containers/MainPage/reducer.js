@@ -35,7 +35,7 @@ export const initialState = fromJS({
 /* eslint-disable default-case, no-param-reassign */
 const mainPageReducer = (state = initialState, action) =>
   produce(state, (/* draft */) => {
-    console.log('the action is ', action);
+    // console.log('the action is ', action);
     switch (action.type) {
       case LOAD_STORE:
         // console.log('loading store ', action);
@@ -44,7 +44,7 @@ const mainPageReducer = (state = initialState, action) =>
         return state
           .set('loading', false)
           .set('error', false)
-          .set('toDoList', action.events);
+          .set('toDoList', action.todos);
       case LOAD_STORE_ERROR:
         return state.set('loading', false).set('error', action.error);
       case ADD_TO_STORE:

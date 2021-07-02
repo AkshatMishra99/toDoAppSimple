@@ -21,6 +21,7 @@ import messages from './messages';
 
 function MainPage(props) {
   const { toDoList, loadStore: loadStoreProp } = props;
+  console.log(toDoList);
   useInjectReducer({ key: 'mainPage', reducer });
   useInjectSaga({ key: 'mainPage', saga });
   useEffect(() => {
