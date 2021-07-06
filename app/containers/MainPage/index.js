@@ -31,7 +31,7 @@ function MainPage(props) {
     // console.log(loadStore);
   }, []);
   const addToDoHandler = text => {
-    const id = toDoList.reduce((acc, todo) => Math.max(acc, todo.id), 0);
+    const id = toDoList.reduce((acc, todo) => Math.max(acc, todo.id), 0) + 1;
     const todo = { id, message: text };
     // console.log(`in main page ${todo}`);
     addTodo(todo);

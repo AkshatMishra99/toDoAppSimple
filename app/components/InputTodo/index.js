@@ -51,6 +51,7 @@ function InputTodo({ addToDoHandler }) {
     if (text && text.length > 0) {
       // console.log(text);
       addToDoHandler(text);
+      setText('');
     }
   };
   return (
