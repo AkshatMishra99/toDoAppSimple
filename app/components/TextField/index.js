@@ -22,7 +22,7 @@ const TextField = styled(({ className, ...props }) => (
 ))`
   color: #f48fb1;
   margin: 10px auto;
-  width: 200px;
+  width: 400px;
 `;
 
 TextField.propTypes = {};

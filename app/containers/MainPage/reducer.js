@@ -4,7 +4,6 @@
  *
  */
 import produce from 'immer';
-import { fromJS } from 'immutable';
 import {
   LOAD_STORE,
   LOAD_STORE_SUCCESS,
@@ -20,7 +19,7 @@ import {
   DELETE_FROM_STORE_ERROR,
 } from './constants';
 
-export const initialState = fromJS({
+export const initialState = {
   toDoList: [],
   loading: false,
   error: true,
@@ -30,32 +29,40 @@ export const initialState = fromJS({
   updateError: true,
   deleteLoading: true,
   deleteError: false,
-});
+};
 
 /* eslint-disable default-case, no-param-reassign */
 const mainPageReducer = (state = initialState, action) =>
   produce(state, (/* draft */) => {
-    // console.log('the action is ', action);
+    console.log('the action is ', action);
     switch (action.type) {
       case LOAD_STORE:
         // console.log('loading store ', action);
-        return state.set('loading', true).set('error', false);
+        // return state.set('loading', true).set('error', false);
+        return { ...state, loading: true, error: false };
       case LOAD_STORE_SUCCESS:
-        return state
-          .set('loading', false)
-          .set('error', false)
-          .set('toDoList', action.todos);
+        return {
+          ...state,
+          loading: false,
+          error: false,
+          toDoList: action.todos,
+        };
       case LOAD_STORE_ERROR:
-        return state.set('loading', false).set('error', action.error);
+        return {
+          ...state,
+          loading: false,
+          error: action.error,
+        };
       case ADD_TO_STORE:
-        return state
-          .set('toDoList', state.toDoList.concat(action.todo))
-          .set('addLoading', true)
-          .set('addError', false);
+        return {
+          ...state,
+          addLoading: true,
+          toDoList: [...state.toDoList, action.todo],
+        };
       case ADD_TO_STORE_SUCCESS:
-        return state.set('addLoading', false).set('addError', false);
+        return { ...state, addLoading: false, error: false };
       case ADD_TO_STORE_ERROR:
-        return state.set('addLoading', false).set('addError'.action.error);
+        return { ...state, addLoading: false, error: action.error };
       case UPDATE_STORE:
         return state.set('addLoading', true).set(
           'toDoList',
@@ -64,23 +71,28 @@ const mainPageReducer = (state = initialState, action) =>
             return todo;
           }),
         );
-      case UPDATE_STORE_SUCCESS:
-        return state.set('updateLoading', false).set('updateError', false);
-      case UPDATE_STORE_ERROR:
-        return state.set('updateLoading', false).set('updateError', action.err);
+      // case UPDATE_STORE_SUCCESS:
+      //   return state.set('updateLoading', false).set('updateError', false);
+      // case UPDATE_STORE_ERROR:
+      //   return state.set('updateLoading', false).set('updateError', action.err);
       case DELETE_FROM_STORE:
-        return state
-          .set('deleteLoading', true)
-          .set(
-            'toDoList',
-            state.toDoList.filter(todo => todo.id !== action.todoid),
-          );
+        return {
+          ...state,
+          toDoList: state.toDoList.filter(todo => todo.id !== action.todoid),
+          deleteLoading: true,
+        };
       case DELETE_FROM_STORE_SUCCESS:
-        return state.set('deleteLoading', false).set('deleteError', false);
+        return {
+          ...state,
+          deleteLoading: false,
+          error: false,
+        };
       case DELETE_FROM_STORE_ERROR:
-        return state
-          .set('deleteLoading', false)
-          .set('deleteError', action.error);
+        return {
+          ...state,
+          deleteLoading: false,
+          error: action.error,
+        };
       default:
         return state;
     }

@@ -18,6 +18,6 @@ const selectMainPageDomain = state => state.mainPage || initialState;
 const makeToDoListSelector = () =>
   createSelector(
     selectMainPageDomain,
-    substate => substate.get('toDoList'),
+    substate => substate.toDoList,
   );
 export { makeToDoListSelector };

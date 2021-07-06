@@ -8,18 +8,18 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 // import styled from 'styled-components';
 
-import { FormattedMessage } from 'react-intl';
+// import { FormattedMessage } from 'react-intl';
 import { makeStyles } from '@material-ui/styles';
 import Button from '../Button';
 import TextField from '../TextField';
-import messages from './messages';
+// import messages from './messages';
 
 const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
     margin: '50px auto 20px',
-    border: '1px solid rgba(0,0,0,0.5)',
+    // border: '1px solid rgba(0,0,0,0.5)',
     width: '60%',
     padding: '25px 25px 35px',
     borderRadius: '10px',
@@ -29,6 +29,7 @@ const useStyles = makeStyles({
   header: {
     margin: '10px auto 30px',
     fontWeight: '600',
+    fontSize: '24px',
   },
   form: {
     display: 'flex',
@@ -42,20 +43,21 @@ function InputTodo({ addToDoHandler }) {
   const [text, setText] = useState('');
   const onChangeHandler = e => {
     const val = e.target.value;
-    console.log(val);
+    // console.log(val);
     setText(val);
   };
   const onSubmitHandler = e => {
     e.preventDefault();
     if (text && text.length > 0) {
+      // console.log(text);
       addToDoHandler(text);
     }
   };
   return (
     <div className={classes.root}>
-      <div className={classes.header}>
+      {/* <div className={classes.header}>
         <FormattedMessage {...messages.header} />
-      </div>
+      </div> */}
       <div className={classes.form}>
         <TextField
           value={text}
