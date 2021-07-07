@@ -19,11 +19,9 @@ import {
   DELETE_FROM_STORE_ERROR,
 } from './constants';
 
-export function loadStore(a, b) {
+export function loadStore() {
   return {
     type: LOAD_STORE,
-    a,
-    b,
   };
 }
 
@@ -58,11 +56,11 @@ export function addToStoreError(error) {
   };
 }
 
-export function updateStore(todoid, newtodo) {
+export function updateStore(todoid, message) {
   return {
     type: UPDATE_STORE,
     todoid,
-    newtodo,
+    message,
   };
 }
 export function updateStoreSuccess(message) {

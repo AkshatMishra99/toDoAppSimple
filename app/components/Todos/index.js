@@ -19,9 +19,13 @@ const StyledWrapper = styled(({ className, ...props }) => (
   padding: 20px;
 `;
 
-function Todos({ todos, deleteTodoHandler }) {
+function Todos({ todos, deleteTodoHandler, updateTodoHandler }) {
   const todosContent = todos.map(todo => (
-    <Todo todo={todo} deleteTodoHandler={deleteTodoHandler} />
+    <Todo
+      todo={todo}
+      deleteTodoHandler={deleteTodoHandler}
+      updateTodoHandler={updateTodoHandler}
+    />
   ));
   console.log('the todos are here', todos);
   return (
@@ -35,6 +39,7 @@ function Todos({ todos, deleteTodoHandler }) {
 Todos.propTypes = {
   todos: PropTypes.array.isRequired,
   deleteTodoHandler: PropTypes.func.isRequired,
+  updateTodoHandler: PropTypes.func.isRequired,
 };
 
 export default Todos;

@@ -62,13 +62,16 @@ const mainPageReducer = (state = initialState, action) =>
       case ADD_TO_STORE_ERROR:
         return { ...state, addLoading: false, error: action.error };
       case UPDATE_STORE:
-        return state.set('addLoading', true).set(
-          'toDoList',
-          state.toDoList.map(todo => {
-            if (todo.id === action.todoid) return action.newtodo;
-            return todo;
-          }),
-        );
+        return {
+          ...state,
+          toDoList: state.toDoList.reduce((acc, todo) => {
+            if (todo.id === action.todoid) {
+              todo.message = action.message;
+            }
+            acc.push(todo);
+            return acc;
+          }, []),
+        };
       // case UPDATE_STORE_SUCCESS:
       //   return state.set('updateLoading', false).set('updateError', false);
       // case UPDATE_STORE_ERROR:
